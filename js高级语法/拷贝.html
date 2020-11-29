@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //引用值拷贝克隆复制
+    // let person1;
+    // person1 = {
+    //     name:'张三',
+    //     age:12,
+    //     ser:'male',
+    //     height:180,
+    //     weight:140
+    // };
+    // //新的变量名指向同一个地址
+    // // let person2 =person1;
+    // let person2={}
+    //
+    // for (let key in person1){
+    //     //循环拿出属性值 ---->浅拷贝(对象里面包裹对象的不能使用浅拷贝)
+    //     person2[key] = person1[key]
+    // }
+    // person2.name = "李四"
+    // console.log(person1)
+    // console.log(person2)
+    //判断属性是否在原型上面,hasownproperty(key)
+  let person1 = {
+        name:'张三',
+        age:12,
+        ser:'male',
+        height:180,
+        weight:140,
+        second:{
+            name:"张小三",
+            age:"12"
+        }
+    };
+    let  person2 = deepClone(person1)
+    person2.name="王五"
+    console.log(person2)
+    console.log(person1)
+//深拷贝
+    function deepClone(origin,target){
+        //判断有无传入目标对象值
+        var target = target || {},
+            //原型判断类型
+            toStr = Object.prototype.toString,
+            arrType = '[object Array]';
+        for (var key in origin){
+            //如果属性是挂在原型上的不拷贝
+            if (origin.hasOwnProperty(key)){
+                if (typeof (origin[key]) === 'object' && origin[key] !== null){
+                    if (toStr.call(origin[key]) === arrType){
+                        target[key] = [];
+                    }else {
+                        target[key] = {};
+                    }
+                    // 递归进行使用
+                    deepClone(origin[key],target[key])
+                }else {
+                    target[key] = origin[key]
+                }
+            }
+        }
+        return target
+    }
+
+</script>
+</body>
+</html>
