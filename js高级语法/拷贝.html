@@ -27,40 +27,41 @@
     // console.log(person1)
     // console.log(person2)
     //判断属性是否在原型上面,hasownproperty(key)
-  let person1 = {
-        name:'张三',
-        age:12,
-        ser:'male',
-        height:180,
-        weight:140,
-        second:{
-            name:"张小三",
-            age:"12"
+    let person1 = {
+        name: '张三',
+        age: 12,
+        ser: 'male',
+        height: 180,
+        weight: 140,
+        second: {
+            name: "张小三",
+            age: "12"
         }
     };
-    let  person2 = deepClone(person1)
-    person2.name="王五"
+    let person2 = deepClone(person1)
+    person2.name = "王五"
     console.log(person2)
     console.log(person1)
-//深拷贝
-    function deepClone(origin,target){
+
+    //深拷贝
+    function deepClone(origin, target) {
         //判断有无传入目标对象值
         var target = target || {},
             //原型判断类型
             toStr = Object.prototype.toString,
             arrType = '[object Array]';
-        for (var key in origin){
+        for (var key in origin) {
             //如果属性是挂在原型上的不拷贝
-            if (origin.hasOwnProperty(key)){
-                if (typeof (origin[key]) === 'object' && origin[key] !== null){
-                    if (toStr.call(origin[key]) === arrType){
+            if (origin.hasOwnProperty(key)) {
+                if (typeof (origin[key]) === 'object' && origin[key] !== null) {
+                    if (toStr.call(origin[key]) === arrType) {
                         target[key] = [];
-                    }else {
+                    } else {
                         target[key] = {};
                     }
                     // 递归进行使用
-                    deepClone(origin[key],target[key])
-                }else {
+                    deepClone(origin[key], target[key])
+                } else {
                     target[key] = origin[key]
                 }
             }
@@ -68,6 +69,18 @@
         return target
     }
 
+    //json拷贝实现深拷贝
+    //     报undefined,是对象属性不存在,方法未定义,
+    function a() {
+        var test;
+        test()
+
+        function test() {
+            console.log(1)
+        }
+    }
+    a()
+    //先
 </script>
 </body>
 </html>
