@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var arr1 = ['a','v','c']
+    // var arr2 = ['a','c','f']
+    // var arr3 = arr1.concat(arr2)
+    // console.log(arr3)
+    //toString(),转成字符串
+    // console.log(arr1.toString())
+    //slice
+    var arr4 = ['a','b','c','h','f']
+    var arr5 = arr4.slice()
+    console.log(arr5)
+    //从下标为1开始截取,且包含自身
+    // var arr6 = arr4.slice(1)
+    //第二个值代表截取的位置之前的值
+    //第一个为负值从后往前算
+    // var arr6 = arr4.slice(1,3)
+    // console.log(arr6)
+
+    //join /split
+    var str2 = arr4.join('%')
+    console.log(str2)
+    //第二个参数为截取的位数
+    var newarr = str2.split('%',3)
+    console.log(newarr)
+    //类数组
+    function test() {
+        console.log(arguments)
+
+    }
+    test(1,2,3,4,5,44,4,4)
+</script>
+</body>
+</html>

@@ -40,6 +40,11 @@
         return this.length;
     }
     arr4.myPush(222,2333,2333,2222,222)
+    Array.prototype.myUnSHift = function (arr,newdata){
+        arr.splice(0,0,newdata)
+        return arr.length
+    }
+    let arr12 = [1,2,4,5,32,4,2,3];
 
     //pop shift
     var arr6 = ['a','b','c'];
@@ -112,6 +117,7 @@
     //push unshift pop/shift reverse/sort
     //用splice 重写原型数组的unshift方法
     //按照字节数排序数组
+
 </script>
 </body>
 </html>
